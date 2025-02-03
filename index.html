@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="photo_2025-01-19_17-31-42.jpg">
+    <title>Hotel Mac gregor</title>
+    <script src="js1.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('photo-1494500764479-0c8f2919a3d8.jpg');
+            background-size: cover;
+        }
+        
+        header,
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .hotel-description {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Fondo blanco translúcido */
+            padding: 1rem;
+            margin: 1rem 0;
+            width: 80%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hotel-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .hotel-images img {
+            max-width: 48%;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hotel Mac gregor</h1>
+    </header>
+    <div>
+        <label for="alumnoInput">Nombre del Alumno:</label>
+        <input type="text" id="alumnoInput" readonly>
+        <button onclick="consultarAlumno('alumnoInput')">Consultar Alumno</button>
+    </div>
+    <main>
+        <section class="hotel-description">
+            <h2>Bienvenidos al Hotel Mac gregor</h2>
+            <p>Ubicado Al Sur del Dragal el Hotel Mac gregor ofrece una experiencia única de confort y lujo. Disfrute de nuestras instalaciones de primera clase y de un servicio excepcional.</p>
+            <h3>Habitaciones</h3>
+            <p>Nuestras habitaciones están diseñadas para ofrecer la máxima comodidad, con vistas impresionantes y todas las comodidades modernas.</p>
+            <h3>Servicios</h3>
+            <p>Ofrecemos una amplia gama de servicios, incluyendo wiffi, restaurante, cocina y piscina. Todo lo que necesita para una estancia perfecta.</p>
+            <div class="hotel-images">
+                <img src="https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/fd/8d/526976760efcb0054ca9fc56142090bb5ffc2cc959d1db0a575b408d6a74.jpeg" alt="Habitación del Hotel">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/13/56/b5/9c/hotel-villa-jazmin.jpg" alt="Piscina del Hotel">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYo4o7MXC1d5kQpXBgSOeCQD_PKJ989L6GDQ&s" alt="Restaurante del Hotel">
+                <img src="THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg" alt="Cartel del Hotel">
+            </div>
+            <a href="pagina2.html" class="link-button">Ir a Consulta de Artículos</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Hotel Mac gregor</p>
+    </footer>
+</body>
+
+</html>

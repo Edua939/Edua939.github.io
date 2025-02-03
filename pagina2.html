@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Artículos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('photo-1494500764479-0c8f2919a3d8.jpg');
+            background-size: cover;
+        }
+        
+        .menu {
+            margin-top: 20px;
+        }
+        
+        .producto {
+            border: 1px solid rgba(0, 0, 0, 0.199);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .categoria {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Menú de Artículos</h1>
+    <label for="categoria">Seleccione una categoría:</label>
+    <select id="categoria">
+        <option value="DEPORTE">DEPORTE</option>
+        <option value="HOGAR">HOGAR</option>
+        <option value="TECNOLOGIA">TECNOLOGIA</option>
+        <option value="COMIDA">COMIDA</option>
+    </select>
+    <div class="menu" id="menu">
+        <!-- Aquí se mostrarán los productos -->
+    </div>
+
+    <a href="index.html" class="link-button">Regresar a la Página Principal</a>
+    <script>
+        const URLc = 'https://unefa6tosistemas2025api.onrender.com/api/articulos';
+        const cedula = '30874505';
+
+        document.getElementById('categoria').addEventListener('change', cargarArticulos);
+
+        async function cargarArticulos() {
+            const categoriaSeleccionada = document.getElementById('categoria').value;
+            const respuesta = await fetch(URLc, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "ALUMNO": cedula,
+                    "ARTCATEGO": categoriaSeleccionada
+                })
+            });
+            const resultado = await respuesta.json();
+            if (resultado.Resul) {
+                const ListaProductos = resultado.data;
+                const menu = document.getElementById('menu');
+                menu.innerHTML = ''; // Limpiar el menú antes de mostrar los nuevos productos
+                if (ListaProductos.length === 0) {
+                    menu.innerHTML = "<p>Lista Vacía</p>";
+                } else {
+                    ListaProductos.forEach(producto => {
+                        const productoDiv = document.createElement('div');
+                        productoDiv.classList.add('producto');
+                        productoDiv.innerHTML = `
+                            <div class="categoria">${producto.ARTCATEGO}</div>
+                            <div class="numero">Número: ${producto.ARTNUMERO}</div>
+                            <div class="descripcion">Descripción: ${producto.ARTDESCRI}</div>
+                            <div class="precio">Precio: ${producto.ARTPRECIO}</div>
+                        `;
+                        menu.appendChild(productoDiv);
+                    });
+                }
+            } else {
+                console.log("Lista Vacía");
+            }
+        }
+
+        cargarArticulos(); // Cargar artículos al inicio con la categoría seleccionada por defecto
+    </script>
+</body>
+
+</html>
